@@ -24,9 +24,9 @@ class Glossary():
         sources = [x["source"].replace("\xa0"," ") for x in self.__dict.values()]
         return list(set(sources))
         
-def get_soup(url, headers=None):
+def get_soup(url : str, headers=None):
     req = requests.get(url)
-    return BeautifulSoup(req.content, 'html.parser')
+    return BeautifulSoup(req.content, 'html5lib')
 
 def create_glossary(soup):
     all_gloss_letters = soup.select("ul[id^=gloss]")
